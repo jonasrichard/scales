@@ -14,4 +14,72 @@ pub enum Interval {
     Octave = 12,
 }
 
-// TODO implement as const arrays the modes
+const IONIAN: [Interval; 7] = [
+    Interval::Unison,
+    Interval::Major2nd,
+    Interval::Major3rd,
+    Interval::Perfect4th,
+    Interval::Perfect5th,
+    Interval::Major6th,
+    Interval::Major7th,
+];
+
+const DORIAN: [Interval; 7] = [
+    Interval::Unison,
+    Interval::Major2nd,
+    Interval::Minor3rd,
+    Interval::Perfect4th,
+    Interval::Perfect5th,
+    Interval::Major6th,
+    Interval::Minor7th,
+];
+
+const PHRYGIAN: [Interval; 7] = [
+    Interval::Unison,
+    Interval::Minor2nd,
+    Interval::Minor3rd,
+    Interval::Perfect4th,
+    Interval::Perfect5th,
+    Interval::Minor6th,
+    Interval::Minor7th,
+];
+
+const LYDIAN: [Interval; 7] = [
+    Interval::Unison,
+    Interval::Major2nd,
+    Interval::Major3rd,
+    Interval::Tritone,
+    Interval::Perfect5th,
+    Interval::Major6th,
+    Interval::Major7th,
+];
+
+const MIXOLYDIAN: [Interval; 7] = [
+    Interval::Unison,
+    Interval::Major2nd,
+    Interval::Major3rd,
+    Interval::Perfect4th,
+    Interval::Perfect5th,
+    Interval::Major6th,
+    Interval::Minor7th,
+];
+
+const AEOLIAN: [Interval; 7] = [
+    Interval::Unison,
+    Interval::Major2nd,
+    Interval::Minor3rd,
+    Interval::Perfect4th,
+    Interval::Perfect5th,
+    Interval::Minor6th,
+    Interval::Minor7th,
+];
+
+const LOCRIAN: [Interval; 7] = [
+    Interval::Unison,
+    Interval::Minor2nd,
+    Interval::Minor3rd,
+    Interval::Perfect4th,
+    Interval::Tritone,
+    Interval::Minor6th,
+    Interval::Minor7th,
+];
