@@ -1,3 +1,5 @@
+use crate::scale::Interval;
+
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum PitchClass {
     C = 0,
@@ -61,6 +63,15 @@ impl Pitch {
             octave,
         })
     }
+
+    pub fn to_numeric_scale_degree(&self) -> u16 {
+        let num: u16 = self.class.into();
+        let acc: u16 = self.accidental.into();
+
+        num + acc
+    }
+
+    pub fn add_interval(&self, interval: &Interval) -> Self {}
 
     pub fn same_pitch(&self, other: &Self) -> bool {
         self.same_tone(other) && self.octave == other.octave
@@ -148,4 +159,3 @@ mod tests {
         assert_eq!(Pitch::parse("D#"), None);
     }
 }
-

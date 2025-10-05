@@ -1,3 +1,5 @@
+use crate::pitch::Pitch;
+
 pub enum Interval {
     Unison = 0,
     Minor2nd = 1,
@@ -44,6 +46,7 @@ const PHRYGIAN: [Interval; 7] = [
     Interval::Minor7th,
 ];
 
+// I still don't have a good modeling idea how to express the flat 4th here.
 const LYDIAN: [Interval; 7] = [
     Interval::Unison,
     Interval::Major2nd,
@@ -83,3 +86,12 @@ const LOCRIAN: [Interval; 7] = [
     Interval::Minor6th,
     Interval::Minor7th,
 ];
+
+// TODO implement a feature like, one F lydian I want chord progression:
+// I iv V III or something
+
+// Here we need to learn const generic
+
+pub fn compute_scale(root_note: Pitch, scale: [Interval; 7]) -> Vec<Pitch> {
+    vec![]
+}
