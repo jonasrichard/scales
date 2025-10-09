@@ -37,7 +37,7 @@ const HALF_DIMINISED: [Interval; 4] = [
     Interval::Minor7th,
 ];
 
-// ?
+// Cdim7
 const DIMINISED7: [Interval; 4] = [
     Interval::Unison,
     Interval::Minor3rd,
@@ -46,14 +46,12 @@ const DIMINISED7: [Interval; 4] = [
     Interval::Major6th,
 ];
 
-// I don't know
-const SUSPENDED2: [Interval; 3] = [
-    Interval::Unison,
-    // unclear if it can be Minore2nd as well
-    Interval::Major2nd,
-    Interval::Perfect5th,
-];
+// Csus2
+const SUSPENDED2: [Interval; 3] = [Interval::Unison, Interval::Major2nd, Interval::Perfect5th];
 
+// Csus4
 const SUSPENDED4: [Interval; 3] = [Interval::Unison, Interval::Perfect4th, Interval::Perfect5th];
 
 // TODO augmented and suspended chords
+//
+// https://www.all-guitar-chords.com/
