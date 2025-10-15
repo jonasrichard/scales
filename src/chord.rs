@@ -1,4 +1,4 @@
-use crate::scale::Interval;
+use crate::interval::Interval;
 
 const MINOR: [Interval; 3] = [Interval::Unison, Interval::Minor3rd, Interval::Perfect5th];
 const MAJOR: [Interval; 3] = [Interval::Unison, Interval::Major3rd, Interval::Perfect5th];
@@ -55,3 +55,5 @@ const SUSPENDED4: [Interval; 3] = [Interval::Unison, Interval::Perfect4th, Inter
 // TODO augmented and suspended chords
 //
 // https://www.all-guitar-chords.com/
+//
+// Chord can have major quality or minor quality
