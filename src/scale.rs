@@ -9,241 +9,34 @@ pub struct ScaleDegree {
 }
 
 #[derive(Clone, Debug)]
-pub struct Scale {
-    pub root_note: Pitch,
+pub struct ScaleType {
     pub name: String,
     pub scale_degrees: Vec<ScaleDegree>,
-    pub pitches: Vec<Pitch>,
 }
 
-pub const IONIAN: [ScaleDegree; 7] = [
-    ScaleDegree {
-        degree: 1,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 2,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 3,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 4,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 5,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 6,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 7,
-        modifier: Accidental::Natural,
-    },
-];
-
-pub const DORIAN: [ScaleDegree; 7] = [
-    ScaleDegree {
-        degree: 1,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 2,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 3,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 4,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 5,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 6,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 7,
-        modifier: Accidental::Flat,
-    },
-];
-
-pub const PHRYGIAN: [ScaleDegree; 7] = [
-    ScaleDegree {
-        degree: 1,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 2,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 3,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 4,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 5,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 6,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 7,
-        modifier: Accidental::Flat,
-    },
-];
-
-pub const LYDIAN: [ScaleDegree; 7] = [
-    ScaleDegree {
-        degree: 1,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 2,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 3,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 4,
-        modifier: Accidental::Sharp,
-    },
-    ScaleDegree {
-        degree: 5,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 6,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 7,
-        modifier: Accidental::Natural,
-    },
-];
-
-pub const MIXOLYDIAN: [ScaleDegree; 7] = [
-    ScaleDegree {
-        degree: 1,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 2,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 3,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 4,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 5,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 6,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 7,
-        modifier: Accidental::Flat,
-    },
-];
-
-pub const AEOLIAN: [ScaleDegree; 7] = [
-    ScaleDegree {
-        degree: 1,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 2,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 3,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 4,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 5,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 6,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 7,
-        modifier: Accidental::Flat,
-    },
-];
-
-pub const LOCRIAN: [ScaleDegree; 7] = [
-    ScaleDegree {
-        degree: 1,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 2,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 3,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 4,
-        modifier: Accidental::Natural,
-    },
-    ScaleDegree {
-        degree: 5,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 6,
-        modifier: Accidental::Flat,
-    },
-    ScaleDegree {
-        degree: 7,
-        modifier: Accidental::Flat,
-    },
-];
+#[derive(Clone, Debug)]
+pub struct Scale {
+    pub root_note: Pitch,
+    pub scale_type: ScaleType,
+    pub pitches: Vec<Pitch>,
+}
 
 /// Interval distances of scale degrees.
 pub const SCALE_NATURAL_DEGREES: [u8; 7] = [0, 2, 4, 5, 7, 9, 11];
 
 impl Scale {
-    pub fn new(root_note: &Pitch, name: &str, degrees: &[ScaleDegree]) -> Self {
+    pub fn new(root_note: &Pitch, scale_type: &ScaleType) -> Self {
         Scale {
             root_note: *root_note,
-            name: name.to_string(),
-            scale_degrees: degrees.to_vec(),
-            pitches: Scale::build_scale(root_note, degrees),
+            scale_type: scale_type.clone(),
+            pitches: Scale::build_scale(root_note, &scale_type.scale_degrees),
         }
+    }
+
+    pub fn from_pitch_string(root: &str, scale_type: &ScaleType) -> Self {
+        let p = Pitch::parse(root).unwrap();
+
+        Scale::new(&p, scale_type)
     }
 
     pub fn to_numeric_degrees(degrees: &[ScaleDegree]) -> Vec<i8> {
@@ -293,7 +86,10 @@ impl Display for ScaleDegree {
 
 impl Display for Scale {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let _ = f.write_fmt(format_args!("{} {} - ", self.root_note, self.name));
+        let _ = f.write_fmt(format_args!(
+            "{} {} - ",
+            self.root_note, self.scale_type.name
+        ));
 
         for pitch in &self.pitches {
             let _ = f.write_fmt(format_args!("{} ", pitch));
@@ -301,7 +97,7 @@ impl Display for Scale {
 
         let _ = f.write_str(" - ");
 
-        for degree in &self.scale_degrees {
+        for degree in &self.scale_type.scale_degrees {
             let _ = f.write_fmt(format_args!("{} ", degree));
         }
 
@@ -344,12 +140,16 @@ pub fn scale_from_string(scale: &str) -> Vec<Pitch> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::pitch::PitchClass;
+    use crate::{modes, pitch::PitchClass};
 
     #[test]
     fn compute_scale_test() {
         let a = Pitch::new(PitchClass::A);
-        let a_ionian = Scale::new(&a, "ionian", &IONIAN);
+        let ionian = ScaleType {
+            name: "ionian".to_string(),
+            scale_degrees: modes::IONIAN.to_vec(),
+        };
+        let a_ionian = Scale::new(&a, &ionian);
 
         assert_eq!(
             scale_from_string("A1 B1 C#1 D1 E1 F#1 G#1"),
