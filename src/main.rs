@@ -1,16 +1,15 @@
 use std::collections::HashMap;
 
-use pitch::{Pitch, PitchClass};
-
 use crate::scale::{Scale, ScaleType};
+use crate::scales::modes;
 
 pub mod beat;
 pub mod chord;
 pub mod interval;
-pub mod modes;
 pub mod note;
 pub mod pitch;
 pub mod scale;
+pub mod scales;
 
 fn init_modes(scales: &mut HashMap<String, ScaleType>) {
     let pairs = vec![
